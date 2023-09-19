@@ -12,8 +12,9 @@ export default function RegisterComponent() {
 
   const register = async () => {
     try {
-      await RegisterAPI(credentials.email, credentials.password);
+      const res = await RegisterAPI(credentials.email, credentials.password);
       toast.success('Account created');
+      localStorage.setItem('userEmail', res.user.email);
       navigate('/login');
     } catch (error) {
       console.log(error);

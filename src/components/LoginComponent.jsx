@@ -12,8 +12,9 @@ export default function LoginComponent() {
 
   const login = async () => {
     try {
-      await LoginAPI(credentials.email, credentials.password);
+      const res = await LoginAPI(credentials.email, credentials.password);
       toast.success('Signed in to Linkedin');
+      localStorage.setItem('userEmail', res.user.email);
       navigate('/');
     } catch (error) {
       console.log(error);

@@ -7,7 +7,7 @@ const ModalComponent = ({
   setModalOpen,
   status,
   setStatus,
-  sendStatus,
+  sendPost,
 }) => {
   return (
     <>
@@ -19,7 +19,7 @@ const ModalComponent = ({
         onCancel={() => setModalOpen(false)}
         footer={[
           <Button
-            onClick={sendStatus}
+            onClick={sendPost}
             key='submit'
             type='primary'
             disabled={status.length > 0 ? false : true}
