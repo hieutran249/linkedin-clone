@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RegisterAPI, GoogleSignInAPI } from '../api/AuthAPI';
+import { createUser } from '../api/FirestoreAPI';
 import LinkedinLogo from '../assets/linkedin_logo.png';
 import GoogleButton from 'react-google-button';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +15,7 @@ export default function RegisterComponent() {
     try {
       const res = await RegisterAPI(credentials.email, credentials.password);
       toast.success('Account created');
+      createUser({ name: credentials.name, email: credentials.email });
       localStorage.setItem('userEmail', res.user.email);
       navigate('/login');
     } catch (error) {
@@ -37,6 +39,14 @@ export default function RegisterComponent() {
         </h1>
 
         <div className='auth-inputs'>
+          <input
+            onChange={(event) =>
+              setCredentials({ ...credentials, name: event.target.value })
+            }
+            type='text'
+            className='common-input'
+            placeholder='Your name'
+          />
           <input
             onChange={(event) =>
               setCredentials({ ...credentials, email: event.target.value })

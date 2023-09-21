@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useMemo } from 'react';
 import ModalComponent from '../Modal';
 import PostCard from '../PostCard';
@@ -5,15 +6,18 @@ import { createPost, getPosts } from '../../../api/FirestoreAPI';
 import { getCurrentTimeStamp } from '../../../helpers/useMoment';
 import './index.scss';
 
-const PostStatus = () => {
+const PostStatus = ({ currentUser }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState('');
   const [allPosts, setallPosts] = useState([]);
 
-  const userEmail = localStorage.getItem('userEmail');
-
   const sendPost = async () => {
-    const post = { status, timeStamp: getCurrentTimeStamp('LLL'), userEmail };
+    const post = {
+      status,
+      timeStamp: getCurrentTimeStamp('LLL'),
+      userEmail: currentUser.email,
+      userName: currentUser.name,
+    };
     createPost(post);
     setModalOpen(false);
     setStatus('');

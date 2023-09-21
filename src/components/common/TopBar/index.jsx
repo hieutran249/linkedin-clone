@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
+import ProfilePopup from '../ProfilePopup';
 import LinkedinLogo from '../../../assets/linkedin_logo.png';
 import {
   AiOutlineSearch,
@@ -11,11 +13,16 @@ import User from '../../../assets/user.png';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
 
-const TopBar = () => {
+const TopBar = ({ currentUser }) => {
+  const [popupVisible, setPopupVisible] = useState(false);
   const navigate = useNavigate();
 
   const goToRoute = (route) => {
     navigate(route);
+  };
+
+  const displayProfilePopup = () => {
+    setPopupVisible(!popupVisible);
   };
 
   return (
@@ -37,7 +44,20 @@ const TopBar = () => {
         <BsChatDots className='react-icon' size={25} />
         <AiOutlineBell className='react-icon' size={25} />
       </div>
-      <img src={User} alt='User Logo' className='user-logo' />
+      <img
+        src={User}
+        alt='User Logo'
+        className='user-logo'
+        onClick={displayProfilePopup}
+      />
+      {/* displaying profile popup */}
+      {popupVisible ? (
+        <div className='popup-position'>
+          <ProfilePopup currentUser={currentUser} />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

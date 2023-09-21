@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { getCurrentUser } from '../api/FirestoreAPI';
-import Home from '../Pages/Home';
+import Profile from '../Pages/Profile';
 import TopBar from '../components/common/TopBar';
 
-const HomeLayout = () => {
+const ProfileLayout = () => {
   const [currentUser, setCurrentUser] = useState({});
 
   useMemo(() => {
@@ -12,10 +12,10 @@ const HomeLayout = () => {
 
   return (
     <div>
-      <TopBar />
-      <Home currentUser={currentUser} />
+      <TopBar currentUser={currentUser} />
+      <Profile currentUser={currentUser} />
     </div>
   );
 };
 
-export default HomeLayout;
+export default ProfileLayout;
