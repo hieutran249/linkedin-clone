@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { editProfile } from '../../../api/FirestoreAPI';
 import { AiOutlineClose } from 'react-icons/ai';
 import './index.scss';

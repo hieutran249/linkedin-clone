@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { getPosts } from '../../../api/FirestoreAPI';
 import PostCard from '../PostCard';
 import { AiFillEdit } from 'react-icons/ai';

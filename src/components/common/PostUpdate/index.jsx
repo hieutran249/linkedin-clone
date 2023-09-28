@@ -44,7 +44,7 @@ const PostStatus = ({ currentUser }) => {
       />
 
       {allPosts.map((post) => {
-        return <PostCard key={post.id} post={post} />;
+        return <PostCard key={post.postId} post={post} />;
       })}
     </div>
   );

@@ -8,6 +8,7 @@ const HomeLayout = () => {
 
   useMemo(() => {
     getCurrentUser(setCurrentUser);
+    localStorage.setItem('currentUser', currentUser);
   }, []);
 
   return (

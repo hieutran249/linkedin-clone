@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { RegisterAPI, GoogleSignInAPI } from '../api/AuthAPI';
 import { createUser } from '../api/FirestoreAPI';
 import LinkedinLogo from '../assets/linkedin_logo.png';
