@@ -28,7 +28,11 @@ const PostCard = ({ post }) => {
 
       {/* if the currentUser is loaded then pass it to LikeButton */}
       {currentUser.userId && (
-        <LikeButton userId={currentUser.userId} postId={post.postId} />
+        <LikeButton
+          userId={currentUser.userId}
+          postId={post.postId}
+          currentUser={currentUser}
+        />
       )}
     </div>
   );
